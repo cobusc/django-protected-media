@@ -1,4 +1,7 @@
+static/
 media/
 protected/
 venv/
 db.sqlite3
+*.pyc
+.idea

@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+STATIC_ROOT = "/tmp/demo/static" #os.path.join(BASE_DIR, "static/")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -121,9 +122,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = "%s/media/" % BASE_DIR
+MEDIA_ROOT = "/tmp/demo/media/"  # "%s/media/" % BASE_DIR
 MEDIA_URL = "/media/"
 
 PROTECTED_MEDIA_URL = "/protected/"
-PROTECTED_MEDIA_ROOT = "%s/protected/" % BASE_DIR
-PROTECTED_MEDIA_LOCATION_PREFIX = "location/"
+PROTECTED_MEDIA_ROOT = "/tmp/demo/protected/"  #"%s/protected/" % BASE_DIR
+PROTECTED_MEDIA_LOCATION_PREFIX = "/internal/"
