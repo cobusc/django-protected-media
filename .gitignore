@@ -1,0 +1,4 @@
+media/
+protected/
+venv/
+db.sqlite3
