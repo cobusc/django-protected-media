@@ -17,15 +17,15 @@ Quick start
 
 1. Add "protected_media" to your INSTALLED_APPS setting like this:
 ```python
-    INSTALLED_APPS = [
-        ...
-        'protected_media',
-    ]
+INSTALLED_APPS = [
+    ...
+    'protected_media',
+]
 ```
 
 2. Include the URLconf in your project urls.py like this::
 ```
-    url(r'^protected/', include('protected_media.urls')),
+url(r'^protected/', include('protected_media.urls')),
 ```
 
 3. Add the following settings to `settings.py`:
@@ -73,7 +73,7 @@ The `protected_media` application consists of
 
 Protected media is stored in a different physical location to publically accessible media. The following settings can be specified in `settings.py`:
 ```python
-PROTECTED_MEDIA_ROOT = "%s/protected/"
+PROTECTED_MEDIA_ROOT = "/some/application/dir/protected/"
 PROTECTED_MEDIA_URL = "/protected"
 PROTECTED_MEDIA_SERVER = "nginx"  # Defaults to "django"
 PROTECTED_MEDIA_LOCATION_PREFIX = "/internal"  # Prefix used in nginx config
@@ -92,3 +92,18 @@ picture = ProtectedImageField(upload_to="uploads/")
 ```
 
 These classes have a custom storage backend `ProtectedFileSystemStorage` which mananges the filesystem location and URLs associated with protected media.
+
+When `nginx` is used, the configuration must be updated to look like this:
+```
+# Publicly accessible media
+location /media  {
+    alias /some/application/dir/media;
+}
+
+# Protected media
+location /internal  {
+    internal;
+    alias /some/application/dir/protected;
+}
+```
+
