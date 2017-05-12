@@ -28,6 +28,66 @@ Quick start
 
 3. Add the following settings to `settings.py`:
 
-    TODO
+```python
+PROTECTED_MEDIA_ROOT = "%s/protected/"
+PROTECTED_MEDIA_URL = "/protected"
+PROTECTED_MEDIA_SERVER = "nginx"  # Defaults to "django"
+PROTECTED_MEDIA_LOCATION_PREFIX = "/internal"  # Prefix used in nginx config
+```
 
+Overview
+--------
 
+Django manages media based on the following definitions:
+```python
+BASE_DIR = "/some/application/dir/"
+MEDIA_ROOT = "%s/media/" % BASE_DIR
+MEDIA_URL = "/media/"
+```
+
+File- and image fields are typically defined as:
+```python
+document = models.FileField(upload_to="uploads/")
+picture = models.ImageField(upload_to="uploads/")
+# Files will be stored under MEDIA_ROOT + upload_to
+```
+
+In a typical production environment one would let `nginx` (or some other server) serve the media:
+```
+# Publicly accessible media
+location ^~ /media/ {
+    alias /some/application/dir/media
+}
+```
+
+This works well when the media should be publically accessible. However, if the media should be protected, we need a way for Django to check whether the request for the media should only be allowed for logged in (or more stringent criteria) users.
+
+The `protected_media` application
+--------------------------------
+The `protected_media` application consists of
+* new `settings.py` attributes,
+* a customized FileSystemStorage class,
+* a custom handler for the protected media URL and
+* additional web server configuration if serving via `nginx` or something similar.
+
+Protected media is stored in a different physical location to publically accessible media. The following settings can be specified in `settings.py`:
+```python
+PROTECTED_MEDIA_ROOT = "%s/protected/"
+PROTECTED_MEDIA_URL = "/protected"
+PROTECTED_MEDIA_SERVER = "nginx"  # Defaults to "django"
+PROTECTED_MEDIA_LOCATION_PREFIX = "/internal"  # Prefix used in nginx config
+```
+
+When defining a file or image field that needs to be protected, we use one of the
+classes provided by the `protected_media` application:
+* `ProtectedFileField`
+* `ProtectedImageField`
+
+Protected file- and image fields are typically defined as:
+```python
+document = ProtectedFileField(upload_to="uploads/")
+picture = ProtectedImageField(upload_to="uploads/")
+# Files will be stored under PROTECTED_MEDIA_ROOT + upload_to
+```
+
+These classes have a custom storage backend `ProtectedFileSystemStorage` which mananges the filesystem location and URLs associated with protected media.
