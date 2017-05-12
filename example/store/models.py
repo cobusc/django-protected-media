@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from protected_media.models import ProtectedFileField, ProtectedFileSystemStorage
+from protected_media.models import ProtectedFileField
 
 
 class FileCollection(models.Model):

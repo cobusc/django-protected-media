@@ -16,3 +16,9 @@ PROTECTED_MEDIA_URL = getattr(
 PROTECTED_MEDIA_LOCATION_PREFIX = getattr(
     settings, "PROTECTED_MEDIA_LOCATION_PREFIX", PROTECTED_MEDIA_URL
 )
+
+# The server used to server the media. Django will always perform the
+# authorisation.
+PROTECTED_MEDIA_SERVER = getattr(
+    settings, "PROTECTED_MEDIA_SERVER", "django"
+)

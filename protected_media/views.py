@@ -16,7 +16,6 @@ from settings import PROTECTED_MEDIA_LOCATION_PREFIX, PROTECTED_MEDIA_ROOT
 @login_required
 def protected_view(request, path, server="django", as_download=False):
     if server != "django":
-        print("Using server {} to send media".format(server))
         mimetype, encoding = mimetypes.guess_type(path)
         response = HttpResponse()
         response["Content-Type"] = mimetype
@@ -30,7 +29,6 @@ def protected_view(request, path, server="django", as_download=False):
         response[server_header(server)] = os.path.join(
             PROTECTED_MEDIA_LOCATION_PREFIX, path
         ).encode("utf8")
-        print(response)
     else:
         response = serve(
             request, path, document_root=PROTECTED_MEDIA_ROOT,

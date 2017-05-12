@@ -126,5 +126,6 @@ MEDIA_ROOT = "/tmp/demo/media/"  # "%s/media/" % BASE_DIR
 MEDIA_URL = "/media/"
 
 PROTECTED_MEDIA_URL = "/protected/"
-PROTECTED_MEDIA_ROOT = "/tmp/demo/protected/"  #"%s/protected/" % BASE_DIR
+PROTECTED_MEDIA_ROOT = "/tmp/demo/protected/"
 PROTECTED_MEDIA_LOCATION_PREFIX = "/internal/"
+PROTECTED_MEDIA_SERVER = "nginx"
