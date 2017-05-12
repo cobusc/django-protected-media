@@ -15,19 +15,20 @@ hands off the serving of the file to a web server, like Nginx.
 Quick start
 -----------
 
-1. Add "protected_media" to your INSTALLED_APPS setting like this::
-
+1. Add "protected_media" to your INSTALLED_APPS setting like this:
+```python
     INSTALLED_APPS = [
         ...
         'protected_media',
     ]
+```
 
 2. Include the URLconf in your project urls.py like this::
-
+```
     url(r'^protected/', include('protected_media.urls')),
+```
 
 3. Add the following settings to `settings.py`:
-
 ```python
 PROTECTED_MEDIA_ROOT = "%s/protected/"
 PROTECTED_MEDIA_URL = "/protected"
