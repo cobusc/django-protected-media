@@ -28,12 +28,20 @@ INSTALLED_APPS = [
 url(r'^protected/', include('protected_media.urls')),
 ```
 
-3. Add the following settings to `settings.py`:
+3. Add the following settings to `settings.py` if the defaults need to be tweaked:
 ```python
-PROTECTED_MEDIA_ROOT = "%s/protected/"
+PROTECTED_MEDIA_ROOT = "%s/protected/" % BASE_DIR
 PROTECTED_MEDIA_URL = "/protected"
 PROTECTED_MEDIA_SERVER = "nginx"  # Defaults to "django"
 PROTECTED_MEDIA_LOCATION_PREFIX = "/internal"  # Prefix used in nginx config
+```
+
+4. Use the new field classes in your models:
+```python
+def SomeModel(models.Model):
+    document = ProtectedFileField(upload_to="uploads/")
+    picture = ProtectedImageField(upload_to="uploads/")
+    # Files will be stored under PROTECTED_MEDIA_ROOT + upload_to
 ```
 
 Overview
