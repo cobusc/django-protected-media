@@ -14,7 +14,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     license='BSD License',  # example license
-    description='A simple Django app to conduct Web-based polls.',
+    description='A simple Django app to serve protected media',
     long_description=README,
     url='https://www.example.com/',
     author='Cobus Carstens',
@@ -22,7 +22,7 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: X.Y',  # replace "X.Y" as appropriate
+        'Framework :: Django :: 1.9',  # replace "X.Y" as appropriate
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',  # example license
         'Operating System :: OS Independent',

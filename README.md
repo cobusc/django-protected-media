@@ -7,7 +7,7 @@ sensitive in a protected fashion.
 Not only does the media get stored in a separate filesystem location, but authorisation
 is also required to access it.
 
-The application supports allows for setups where Django performs the authorisation, but
+The application allows for setups where Django performs the authorisation, but
 hands off the serving of the file to a web server, like Nginx.
 
 Quick start
@@ -20,7 +20,7 @@ Quick start
         'protected_media',
     ]
 
-2. Include the polls URLconf in your project urls.py like this::
+2. Include the URLconf in your project urls.py like this::
 
     url(r'^protected/', include('protected_media.urls')),
 
