@@ -1,3 +1,5 @@
+![Build Status](https://www.travis-ci.org/cobusc/protected-media-prototype.svg?branch=master)
+
 Django Protected Media
 ======================
 
