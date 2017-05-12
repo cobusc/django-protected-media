@@ -5,3 +5,6 @@ venv/
 db.sqlite3
 *.pyc
 .idea
+dist/
+django_protected_media.egg-info/
+
