@@ -1,5 +1,5 @@
 test:
-	python setup.py test
+	make -C example test
 
 publish:
 	- rm dist/*
