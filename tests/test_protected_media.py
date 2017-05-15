@@ -1,8 +1,6 @@
 import django
 django.setup()
 
-from django.conf import settings
-
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db.models import Model, FileField, ImageField
 from django.test import TestCase

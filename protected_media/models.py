@@ -18,22 +18,24 @@ class ProtectedFileSystemStorage(FileSystemStorage):
     are decorated with cached_property for this class to work as intended.
     """
     def __init__(self, *args, **kwargs):
+        kwargs["location"] = PROTECTED_MEDIA_ROOT
+        kwargs["base_url"] = PROTECTED_MEDIA_URL
         super(ProtectedFileSystemStorage, self).__init__(*args, **kwargs)
 
-    @cached_property
-    def base_location(self):
-        return PROTECTED_MEDIA_ROOT
-
-    @cached_property
-    def location(self):
-        return abspathu(self.base_location)
-
-    @cached_property
-    def base_url(self):
-        result = PROTECTED_MEDIA_URL
-        if not result.endswith('/'):
-            result += '/'
-        return result
+#    @cached_property
+#    def base_location(self):
+#        return PROTECTED_MEDIA_ROOT
+#
+#    @cached_property
+#    def location(self):
+#        return abspathu(self.base_location)
+#
+#    @cached_property
+#    def base_url(self):
+#        result = PROTECTED_MEDIA_URL
+#        if not result.endswith('/'):
+#            result += '/'
+#        return result
 
 
 class ProtectedFileField(models.FileField):
