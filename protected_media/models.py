@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.core.files.storage import FileSystemStorage, abspathu
 from django.db import models
 
-from settings import PROTECTED_MEDIA_ROOT, PROTECTED_MEDIA_URL
+from .settings import PROTECTED_MEDIA_ROOT, PROTECTED_MEDIA_URL
 
 
 # Create your models here.

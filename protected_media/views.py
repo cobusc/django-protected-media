@@ -9,8 +9,8 @@ from django.http import HttpResponse
 from django.views.static import serve
 from os.path import basename
 
-from utils import server_header
-from settings import PROTECTED_MEDIA_LOCATION_PREFIX, PROTECTED_MEDIA_ROOT
+from .utils import server_header
+from .settings import PROTECTED_MEDIA_LOCATION_PREFIX, PROTECTED_MEDIA_ROOT
 
 
 @login_required
