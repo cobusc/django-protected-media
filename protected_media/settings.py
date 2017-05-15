@@ -5,7 +5,7 @@ PROTECTED_MEDIA_ROOT = getattr(
     settings, "PROTECTED_MEDIA_ROOT", "%s/protected/" % settings.BASE_DIR
 )
 
-# The URL prefix used by protected meda
+# The URL prefix used by protected media
 PROTECTED_MEDIA_URL = getattr(
     settings, "PROTECTED_MEDIA_URL", "protected/"
 )

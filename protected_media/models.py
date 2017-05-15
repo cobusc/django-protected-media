@@ -45,4 +45,4 @@ class ProtectedFileField(models.FileField):
 class ProtectedImageField(models.ImageField):
     def __init__(self, **kwargs):
         kwargs["storage"] = ProtectedFileSystemStorage()
-        super(ProtectedFileField, self).__init__(**kwargs)
+        super(ProtectedImageField, self).__init__(**kwargs)
