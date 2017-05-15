@@ -22,3 +22,8 @@ PROTECTED_MEDIA_LOCATION_PREFIX = getattr(
 PROTECTED_MEDIA_SERVER = getattr(
     settings, "PROTECTED_MEDIA_SERVER", "django"
 )
+
+# Controls whether the protected media are served as downloads. If True, the
+# Content-Disposition flag will be set.
+PROTECTED_MEDIA_AS_DOWNLOADS = False
+
