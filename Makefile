@@ -1,9 +1,6 @@
-./venv:
-	virtualenv venv --always-copy
-	./venv/bin/pip install nose
-
-test: ./venv/
-	DJANGO_SETTINGS_MODULE=tests.settings ./venv/bin/nosetests
+test:
+	- pip install nose
+	DJANGO_SETTINGS_MODULE=tests.settings nosetests
 
 publish:
 	- rm dist/*
