@@ -23,16 +23,16 @@ class TestProtectedMedia(TestCase):
     def test_protected_media(self):
         m = SomeModel()
         m.protected_file = SimpleUploadedFile(
-            "protected_file.txt", "A test file"
+            "protected_file.txt", b"A test file"
         )
         m.protected_image = SimpleUploadedFile(
-            "protected_image.png", "A test image"
+            "protected_image.png", b"A test image"
         )
         m.public_file = SimpleUploadedFile(
-            "public_file.txt", "A test file"
+            "public_file.txt", b"A test file"
         )
         m.public_image = SimpleUploadedFile(
-            "public_image.png", "A test image"
+            "public_image.png", b"A test image"
         )
 
         self.assertEqual(m.protected_file.name, "protected_file.txt")
