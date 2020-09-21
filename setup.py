@@ -15,6 +15,7 @@ setup(
     license='BSD License',  # example license
     description='A simple Django app to serve protected media',
     long_description=README,
+    long_description_content_type='text/markdown',
     url='https://www.example.com/',
     author='Cobus Carstens',
     author_email='cobus.carstens@gmail.com',
