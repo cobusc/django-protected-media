@@ -20,13 +20,13 @@ Quick start
 ```python
 INSTALLED_APPS = [
     ...
-    'protected_media',
+    'protected_media.apps.ProtectedMediaConfig',
 ]
 ```
 
 2. Include the URLconf in your project urls.py like this::
 ```
-url(r'^protected/', include('protected_media.urls')),
+path('protected/', include('protected_media.urls')),
 ```
 
 3. Add the following settings to `settings.py` if the defaults need to be tweaked:

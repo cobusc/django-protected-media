@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "protected_media",
+    "protected_media.apps.ProtectedMediaConfig",
     "store"
 ]
 
