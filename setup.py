@@ -12,11 +12,11 @@ setup(
     version='1.0.0',
     packages=find_packages(),
     include_package_data=True,
-    license='BSD License',  # example license
+    license='BSD License',
     description='A simple Django app to serve protected media',
     long_description=README,
     long_description_content_type='text/markdown',
-    url='https://www.example.com/',
+    url='https://github.com/cobusc/django-protected-media/',
     author='Cobus Carstens',
     author_email='cobus.carstens@gmail.com',
     classifiers=[
@@ -26,7 +26,7 @@ setup(
         'Framework :: Django :: 3.0',
         'Framework :: Django :: 3.1',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',  # example license
+        'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
