@@ -7,7 +7,7 @@ PROTECTED_MEDIA_ROOT = getattr(
 
 # The URL prefix used by protected media
 PROTECTED_MEDIA_URL = getattr(
-    settings, "PROTECTED_MEDIA_URL", "protected/"
+    settings, "PROTECTED_MEDIA_URL", "/protected/"
 )
 
 # An alternative prefix to use with servers like Nginx, where we want to
