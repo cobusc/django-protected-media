@@ -1,4 +1,4 @@
-![Build Status](https://www.travis-ci.org/cobusc/django-protected-media.svg?branch=master)
+![Build Status](https://www.travis-ci.org/theRealBithive/django-protected-media.svg?branch=master)
 
 
 Django Protected Media
