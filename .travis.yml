@@ -22,8 +22,12 @@ jobs:
     python: "3.7"
   - env: DJANGO_VERSION=3.1
     python: "3.8"
-  - env: DJANGO_VERSION=3.1
-    python: "4.0"
+  - env: DJANGO_VERSION=4.0
+    python: "3.8"
+  - env: DJANGO_VERSION=4.0
+    python: "3.9"
+  - env: DJANGO_VERSION=4.0
+    python: "3.10"
 
 
 addons:
