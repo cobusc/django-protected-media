@@ -1,6 +1,6 @@
 from django.conf import settings
 
-if not hasattr(settings, "PROTECTED_MEDIA_ROOT" and not hasattr(settings, "BASE_DIR"):
+if not hasattr(settings, "PROTECTED_MEDIA_ROOT") and not hasattr(settings, "BASE_DIR"):
     raise RuntimeError("The default value for PROTECTED_MEDIA_ROOT requires BASE_DIR to be an available setting.")
 
 # Filesystem location to store protected media.
