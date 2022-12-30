@@ -92,8 +92,7 @@ addons:
 install:
     - sudo cp tests/nginx.conf /etc/nginx/
     - sudo service nginx reload
-    - pip install -q Django==$DJANGO_VERSION
-    - python setup.py -q install
+    - pip install -q Django==$DJANGO_VERSION .
 
 script:
     - make test
