@@ -92,7 +92,7 @@ addons:
 install:
     - sudo cp tests/nginx.conf /etc/nginx/
     - sudo service nginx reload
-    - pip install --upgrade setuptools importlib-metadata
+    - pip install --upgrade setuptools importlib-metadata pip
     - pip install -q Django==$DJANGO_VERSION .
 
 script:
