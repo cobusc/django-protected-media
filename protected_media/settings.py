@@ -1,13 +1,15 @@
+import os
 from django.conf import settings
 
-# Filesystem location to store protected media
+# Filesystem location to store protected media.
+# The default location does not rely on BASE_DIR to be defined anymore.
 PROTECTED_MEDIA_ROOT = getattr(
-    settings, "PROTECTED_MEDIA_ROOT", "%s/protected/" % settings.BASE_DIR
+    settings, "PROTECTED_MEDIA_ROOT", "%s/protected/" % os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 )
 
 # The URL prefix used by protected media
 PROTECTED_MEDIA_URL = getattr(
-    settings, "PROTECTED_MEDIA_URL", "protected/"
+    settings, "PROTECTED_MEDIA_URL", "/protected/"
 )
 
 # An alternative prefix to use with servers like Nginx, where we want to
