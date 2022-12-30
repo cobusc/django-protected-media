@@ -2,6 +2,7 @@ sudo: true
 language: python
 jobs:
   include:
+# https://docs.djangoproject.com/en/4.1/releases/2.2/
   - env: DJANGO_VERSION=2.2
     python: "3.5"
   - env: DJANGO_VERSION=2.2
@@ -10,24 +11,53 @@ jobs:
     python: "3.7"
   - env: DJANGO_VERSION=2.2
     python: "3.8"
+  - env: DJANGO_VERSION=2.2
+    python: "3.9"
+# https://docs.djangoproject.com/en/4.1/releases/3.0/
   - env: DJANGO_VERSION=3.0
     python: "3.6"
   - env: DJANGO_VERSION=3.0
     python: "3.7"
   - env: DJANGO_VERSION=3.0
     python: "3.8"
+  - env: DJANGO_VERSION=3.0
+    python: "3.9"
+# https://docs.djangoproject.com/en/4.1/releases/3.1/
   - env: DJANGO_VERSION=3.1
     python: "3.6"
   - env: DJANGO_VERSION=3.1
     python: "3.7"
   - env: DJANGO_VERSION=3.1
     python: "3.8"
+  - env: DJANGO_VERSION=3.1
+    python: "3.9"
+# https://docs.djangoproject.com/en/4.1/releases/3.2/
+  - env: DJANGO_VERSION=3.2
+    python: "3.6"
+  - env: DJANGO_VERSION=3.2
+    python: "3.7"
+  - env: DJANGO_VERSION=3.2
+    python: "3.8"
+  - env: DJANGO_VERSION=3.2
+    python: "3.9"
+  - env: DJANGO_VERSION=3.2
+    python: "3.10"
+# https://docs.djangoproject.com/en/4.1/releases/4.0/
   - env: DJANGO_VERSION=4.0
     python: "3.8"
   - env: DJANGO_VERSION=4.0
     python: "3.9"
   - env: DJANGO_VERSION=4.0
     python: "3.10"
+# https://docs.djangoproject.com/en/4.1/releases/4.1/
+  - env: DJANGO_VERSION=4.1
+    python: "3.8"
+  - env: DJANGO_VERSION=4.1
+    python: "3.9"
+  - env: DJANGO_VERSION=4.1
+    python: "3.10"
+  - env: DJANGO_VERSION=4.1
+    python: "3.11"
 
 
 addons:
