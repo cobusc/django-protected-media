@@ -2,32 +2,88 @@ sudo: true
 language: python
 jobs:
   include:
+# https://docs.djangoproject.com/en/4.1/releases/2.2/
   - env: DJANGO_VERSION=2.2
     python: "3.5"
+    dist: xenial
   - env: DJANGO_VERSION=2.2
     python: "3.6"
   - env: DJANGO_VERSION=2.2
     python: "3.7"
+    dist: xenial
   - env: DJANGO_VERSION=2.2
     python: "3.8"
+    dist: xenial
+  - env: DJANGO_VERSION=2.2
+    python: "3.9"
+    dist: xenial
+# https://docs.djangoproject.com/en/4.1/releases/3.0/
   - env: DJANGO_VERSION=3.0
     python: "3.6"
+    dist: bionic
   - env: DJANGO_VERSION=3.0
     python: "3.7"
+    dist: bionic
   - env: DJANGO_VERSION=3.0
     python: "3.8"
+    dist: bionic
+  - env: DJANGO_VERSION=3.0
+    python: "3.9"
+    dist: bionic
+# https://docs.djangoproject.com/en/4.1/releases/3.1/
   - env: DJANGO_VERSION=3.1
     python: "3.6"
+    dist: bionic
   - env: DJANGO_VERSION=3.1
     python: "3.7"
+    dist: bionic
   - env: DJANGO_VERSION=3.1
     python: "3.8"
+    dist: bionic
+  - env: DJANGO_VERSION=3.1
+    python: "3.9"
+    dist: bionic
+# https://docs.djangoproject.com/en/4.1/releases/3.2/
+  - env: DJANGO_VERSION=3.2
+    python: "3.6"
+    dist: bionic
+  - env: DJANGO_VERSION=3.2
+    python: "3.7"
+    dist: bionic
+  - env: DJANGO_VERSION=3.2
+    python: "3.8"
+    dist: bionic
+  - env: DJANGO_VERSION=3.2
+    python: "3.9"
+    dist: bionic
+  - env: DJANGO_VERSION=3.2
+    python: "3.10"
+    dist: bionic
+# https://docs.djangoproject.com/en/4.1/releases/4.0/
   - env: DJANGO_VERSION=4.0
     python: "3.8"
+    dist: jammy
   - env: DJANGO_VERSION=4.0
     python: "3.9"
-  - env: DJANGO_VERSION=4.0
-    python: "3.10"
+    dist: jammy
+# Removed due to python dependency issue
+#  - env: DJANGO_VERSION=4.0
+#    python: "3.10"
+#    dist: jammy
+# https://docs.djangoproject.com/en/4.1/releases/4.1/
+  - env: DJANGO_VERSION=4.1
+    python: "3.8"
+    dist: jammy
+  - env: DJANGO_VERSION=4.1
+    python: "3.9"
+    dist: jammy
+# Removed due to python dependency issue
+#  - env: DJANGO_VERSION=4.1
+#    python: "3.10"
+#    dist: jammy
+  - env: DJANGO_VERSION=4.1
+    python: "3.11"
+    dist: jammy
 
 
 addons:
@@ -36,10 +92,10 @@ addons:
     - nginx
 
 install:
-    - sudo ln -s tests/ngingx.conf /etc/nginx/sites-enabled/
+    - sudo cp tests/nginx.conf /etc/nginx/
     - sudo service nginx reload
-    - pip install -q Django==$DJANGO_VERSION
-    - python setup.py -q install
+    - pip install --upgrade setuptools importlib-metadata pip
+    - pip install -q Django==$DJANGO_VERSION .
 
 script:
     - make test

@@ -1,6 +1,6 @@
 test:
-	- pip install nose
-	DJANGO_SETTINGS_MODULE=tests.settings nosetests
+	- pip install pytest
+	DJANGO_SETTINGS_MODULE=tests.settings pytest
 
 publish:
 	- rm dist/*
