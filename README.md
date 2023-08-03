@@ -29,12 +29,12 @@ INSTALLED_APPS = [
 ]
 ```
 
-1. Include the URLconf in your project urls.py like this::
+3. Include the URLconf in your project urls.py like this::
 ```
 path('protected/', include('protected_media.urls')),
 ```
 
-1. Add the following settings to `settings.py` if the defaults need to be tweaked:
+4. Add the following settings to `settings.py` if the defaults need to be tweaked:
 ```python
 PROTECTED_MEDIA_ROOT = "%s/protected/" % BASE_DIR
 PROTECTED_MEDIA_URL = "/protected"
@@ -43,7 +43,7 @@ PROTECTED_MEDIA_LOCATION_PREFIX = "/internal"  # Prefix used in nginx config
 PROTECTED_MEDIA_AS_DOWNLOADS = False  # Controls inclusion of a Content-Disposition header
 ```
 
-1. Use the new field classes in your models:
+5. Use the new field classes in your models:
 ```python
 from protected_media.models import ProtectedImageField, ProtectedFileField
 
