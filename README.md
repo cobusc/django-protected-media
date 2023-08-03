@@ -16,7 +16,12 @@ hands off the serving of the file to a web server, like Nginx.
 Quick start
 -----------
 
-1. Add "protected_media" to your INSTALLED_APPS setting like this:
+1. Install the package with pip like this:
+```bash
+pip install django-protected-media
+```
+
+2. Add "protected_media" to your INSTALLED_APPS setting like this:
 ```python
 INSTALLED_APPS = [
     ...
@@ -24,12 +29,12 @@ INSTALLED_APPS = [
 ]
 ```
 
-2. Include the URLconf in your project urls.py like this::
+1. Include the URLconf in your project urls.py like this::
 ```
 path('protected/', include('protected_media.urls')),
 ```
 
-3. Add the following settings to `settings.py` if the defaults need to be tweaked:
+1. Add the following settings to `settings.py` if the defaults need to be tweaked:
 ```python
 PROTECTED_MEDIA_ROOT = "%s/protected/" % BASE_DIR
 PROTECTED_MEDIA_URL = "/protected"
@@ -38,7 +43,7 @@ PROTECTED_MEDIA_LOCATION_PREFIX = "/internal"  # Prefix used in nginx config
 PROTECTED_MEDIA_AS_DOWNLOADS = False  # Controls inclusion of a Content-Disposition header
 ```
 
-4. Use the new field classes in your models:
+1. Use the new field classes in your models:
 ```python
 from protected_media.models import ProtectedImageField, ProtectedFileField
 
