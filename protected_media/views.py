@@ -13,8 +13,8 @@ from .settings import PROTECTED_MEDIA_LOCATION_PREFIX, PROTECTED_MEDIA_ROOT, PRO
 from .utils import server_header
 
 
-@permission_check(PROTECTED_MEDIA_CHECK_PERMISSION_FUNCTION)
 @login_required
+@permission_check(PROTECTED_MEDIA_CHECK_PERMISSION_FUNCTION)
 def protected_view(request, path, server="django", as_download=False):
     if server != "django":
         mimetype, encoding = mimetypes.guess_type(path)
