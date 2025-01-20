@@ -4,6 +4,20 @@ from django.utils.module_loading import import_string
 
 
 def permission_check(permission_func_path):
+    """
+        Decorator to apply permission checks for the view for the file.
+
+        Args:
+            permission_func_path (str): A dotted string path to a permission function.
+                                        The function should accept two arguments: `user` and `path`,
+                                        and return `True` if the user has permission, or `False` otherwise.
+
+        Returns:
+            function: The decorated view with permission check logic applied.
+
+        Raises:
+            Http404: If the permission function returns `False` or the user lacks the necessary access.
+        """
     def decorator(view_func):
         @wraps(view_func)
         def _wrapped_view(request, *args, **kwargs):

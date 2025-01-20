@@ -31,7 +31,10 @@ PROTECTED_MEDIA_SERVER = getattr(
 # Content-Disposition flag will be set.
 PROTECTED_MEDIA_AS_DOWNLOADS = False
 
-# Add business logic with permission check funcion
+# Default permission check function for protected media
+# This setting allows users to define their own business logic for media access permissions.
+# The function should accept two arguments: `user` and `path`, and return `True` if the user has
+# the required access permissions, or `False` otherwise.
 PROTECTED_MEDIA_CHECK_PERMISSION_FUNCTION = getattr(
     settings, "PROTECTED_MEDIA_CHECK_PERMISSION_FUNCTION", lambda user, path: True
 )
