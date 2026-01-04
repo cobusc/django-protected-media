@@ -47,7 +47,7 @@ PROTECTED_MEDIA_AS_DOWNLOADS = False  # Controls inclusion of a Content-Disposit
 ```python
 from protected_media.models import ProtectedImageField, ProtectedFileField
 
-def SomeModel(models.Model):
+class SomeModel(models.Model):
     document = ProtectedFileField(upload_to="uploads/")
     picture = ProtectedImageField(upload_to="uploads/")
     # Files will be stored under PROTECTED_MEDIA_ROOT + upload_to
