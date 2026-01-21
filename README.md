@@ -53,6 +53,18 @@ class SomeModel(models.Model):
     # Files will be stored under PROTECTED_MEDIA_ROOT + upload_to
 ```
 
+6. Define a custom function for permission logic (optional):
+```python
+# settings.py
+PROTECTED_MEDIA_CHECK_PERMISSION_FUNCTION = "myapp.utils.custom_permission_function"
+
+# utils.py
+def custom_permission_function(user, path):
+    if user.is_superuser or user.is_staff:
+        return True
+    return False
+```
+
 Overview
 --------
 
@@ -78,7 +90,9 @@ location ^~ /media/ {
 }
 ```
 
-This works well when the media should be publically accessible. However, if the media should be protected, we need a way for Django to check whether the request for the media should only be allowed for logged in (or more stringent criteria) users.
+This works well when the media should be publically accessible. However, if the media should be protected, we need a way
+for Django to check whether the request for the media should only be allowed for logged in (or more stringent criteria)
+users.
 
 The `protected_media` application
 --------------------------------
@@ -86,29 +100,52 @@ The `protected_media` application consists of
 * new `settings.py` attributes,
 * a customized FileSystemStorage class,
 * a custom handler for the protected media URL and
+* a decorator for permission checks
 * additional web server configuration if serving via `nginx` or something similar.
 
-Protected media is stored in a different physical location to publically accessible media. The following settings can be specified in `settings.py`:
+Protected media is stored in a different physical location to publically accessible media. The following settings can be
+specified in `settings.py`:
+
 ```python
 PROTECTED_MEDIA_ROOT = "/some/application/dir/protected/"
 PROTECTED_MEDIA_URL = "/protected"
 PROTECTED_MEDIA_SERVER = "nginx"  # Defaults to "django"
 PROTECTED_MEDIA_LOCATION_PREFIX = "/internal"  # Prefix used in nginx config
+PROTECTED_MEDIA_CHECK_PERMISSION_FUNCTION = "myapp.utils.custom_permission_function"  # Optional
 ```
 
 When defining a file or image field that needs to be protected, we use one of the
 classes provided by the `protected_media` application:
+
 * `ProtectedFileField`
 * `ProtectedImageField`
 
 Protected file- and image fields are typically defined as:
+
 ```python
 document = ProtectedFileField(upload_to="uploads/")
 picture = ProtectedImageField(upload_to="uploads/")
 # Files will be stored under PROTECTED_MEDIA_ROOT + upload_to
 ```
 
-These classes have a custom storage backend `ProtectedFileSystemStorage` which mananges the filesystem location and URLs associated with protected media.
+These classes have a custom storage backend `ProtectedFileSystemStorage` which mananges the filesystem location and URLs
+associated with protected media.
+
+Custom permission logic
+--------------------------------
+To enforce business-specific rules for accessing protected media, you can define a custom permission function in your
+settings.py. This function will be dynamically imported and applied after @login_required decorator.
+
+```python
+# settings.py
+PROTECTED_MEDIA_CHECK_PERMISSION_FUNCTION = "myapp.utils.custom_permission_function"
+
+# utils.py
+def custom_permission_function(user, path):
+    if user.is_superuser or user.is_staff:
+        return True
+    return False
+```
 
 When `nginx` is used, the configuration must be updated to look like this:
 ```
